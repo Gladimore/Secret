@@ -1,0 +1,85 @@
+:root {
+  --color1: rgba(0, 0, 0, 0);
+  /* White with no opacity */
+  --color2: rgba(0, 0, 0, 0.2);
+  /* White with some opacity */
+
+  /* Expand Colors */
+  --color1_darken: rgba(0, 0, 0, 0);
+  --color2_darken: rgba(0, 0, 0, 0.5);
+}
+
+#gradient {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  height: 30%;
+  background: radial-gradient(circle, var(--color2) 0%, var(--color1) 50%);
+  background-size: 100% 100%;
+  /* Ensures the gradient stretches to cover the container fully */
+  background-position: center center;
+  /* Ensures the gradient stays centered */
+}
+
+.expanded {
+  animation: expand 0.5s ease-in-out forwards;
+}
+
+#heart {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 15%;
+}
+
+#heart:hover {
+  cursor: pointer;
+}
+
+#text {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10px;
+  font-family: monospace;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+  white-space: pre-wrap; /* Preserve spaces and wrap text */
+  word-wrap: break-word; /* Ensure long words break to avoid overflow */
+  width: 90vw;
+  overflow-wrap: break-word; /* Ensures that words break at the right place */
+  line-height: 1.5; /* Adjust line height for readability */
+  margin-bottom: 5%;
+}
+
+@keyframes expand {
+  0% {
+    background: radial-gradient(circle, var(--color2_darken) 0%, var(--color1_darken) 50%);
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+
+  50% {
+    background: radial-gradient(circle, var(--color2) 0%, var(--color1) 50%);
+    transform: translate(-50%, -50%) scale(1.5); /* Expanding further */
+  }
+
+  100% {
+    background: radial-gradient(circle, var(--color2) 0%, var(--color1) 50%);
+    transform: translate(-50%, -50%) scale(1); /* Scale back to 1 */
+  }
+}
+
+@keyframes beat {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
